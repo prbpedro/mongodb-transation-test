@@ -1,5 +1,7 @@
 # mongodb-transaction-test
-This project objective is to test mongodb transaction concurrency handling.
+This project objective is to create an environment so we can observe mongodb transaction concurrency handling.
+
+Checkout my blog post https://prbpedro.substack.com/p/ensuring-data-integrity-with-transactions?sd=pf for more details on this project.
 
 # Getting Started
 
