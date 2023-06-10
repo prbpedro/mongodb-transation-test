@@ -28,7 +28,7 @@ import com.mongodb.client.model.Updates;
 @SpringBootTest
 class MongoTransactionTestApplicationTests {
 
-    Logger log = Logger.getLogger("THIS");
+    Logger log = Logger.getLogger(this.getClass().getName());
 
     String uri = "mongodb://root:password@mongo:27017/movies?authSource=admin&replicaSet=dbrs&retryWrites=false&retryReads=false";
 

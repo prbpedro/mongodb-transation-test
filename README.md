@@ -17,7 +17,7 @@ Run the [init-resources.sh](init-resources.sh):
 ```bash
 ./init-resources.sh
 ```
-After you can edit and run your own tests based on [MongoTransactionTestApplicationTests](src/main/java/com/github/prbpedro/mongotransactiontest/MongoTransactionTestApplication.java) and observe how mongodb deal with conflicting transactions.
+After you can edit and run your own tests based on [MongoTransactionTestApplicationTests](src/test/java/com/github/prbpedro/mongotransactiontest/MongoTransactionTestApplicationTests.java) and observe how mongodb deal with conflicting transactions.
 
 ### Reference Documentation
 For further reference, please consider the following sections:
