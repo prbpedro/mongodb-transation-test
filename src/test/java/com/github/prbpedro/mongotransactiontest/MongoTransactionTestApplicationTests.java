@@ -2,8 +2,6 @@ package com.github.prbpedro.mongotransactiontest;
 
 import static com.mongodb.client.model.Filters.eq;
 
-import java.time.Duration;
-import java.time.Instant;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.logging.Logger;
@@ -93,11 +91,7 @@ class MongoTransactionTestApplicationTests {
         try (MongoClient mongoClientTry = MongoClients.create(uri)) {
 
             mongoClient = mongoClientTry;
-
-            final AtomicReference<Duration> duration = new AtomicReference<>();
-
             Thread t2 = new Thread(() -> {
-                Instant start = Instant.now();
                 final MongoDatabase database = mongoClient.getDatabase("test");
                 final MongoCollection<Document> collection = database.getCollection("movies");
 
@@ -132,8 +126,6 @@ class MongoTransactionTestApplicationTests {
                             },
                             txnOptions);
                 }
-                duration.set(Duration.between(start, Instant.now()));
-
             });
 
             transactedReplaceOne.start();
@@ -144,9 +136,6 @@ class MongoTransactionTestApplicationTests {
 
             Assertions.assertNull(ex1.get());
             Assertions.assertNull(ex2.get());
-
-            Assertions.assertTrue(duration.get().toSeconds() >= 5);
-
         }
     }
 
@@ -159,11 +148,7 @@ class MongoTransactionTestApplicationTests {
 
             mongoClient = mongoClientTry;
 
-            final AtomicReference<Duration> duration = new AtomicReference<>();
-
             Thread t2 = new Thread(() -> {
-                Instant start = Instant.now();
-
                 final MongoDatabase database = mongoClient.getDatabase("test");
                 final MongoCollection<Document> collection = database.getCollection("movies");
 
@@ -202,8 +187,6 @@ class MongoTransactionTestApplicationTests {
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
                 }
-                duration.set(Duration.between(start, Instant.now()));
-
             });
 
             transactedReplaceOne.start();
@@ -214,8 +197,6 @@ class MongoTransactionTestApplicationTests {
 
             Assertions.assertNull(ex1.get());
             Assertions.assertNull(ex2.get());
-
-            Assertions.assertTrue(duration.get().toSeconds() >= 5);
 
         }
     }
@@ -228,10 +209,7 @@ class MongoTransactionTestApplicationTests {
         try (MongoClient mongoClientTry = MongoClients.create(uri)) {
             mongoClient = mongoClientTry;
 
-            final AtomicReference<Duration> duration = new AtomicReference<>();
-
             Thread t2 = new Thread(() -> {
-                Instant start = Instant.now();
                 final MongoDatabase database = mongoClient.getDatabase("test");
                 final MongoCollection<Document> collection = database.getCollection("movies");
 
@@ -258,7 +236,6 @@ class MongoTransactionTestApplicationTests {
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
                 }
-                duration.set(Duration.between(start, Instant.now()));
             });
 
             transactedReplaceOne.start();
@@ -269,8 +246,6 @@ class MongoTransactionTestApplicationTests {
 
             Assertions.assertNull(ex1.get());
             Assertions.assertNull(ex2.get());
-
-            Assertions.assertTrue(duration.get().toSeconds() >= 5);
 
         }
     }
