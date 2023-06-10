@@ -15,7 +15,7 @@ Also add the following line '127.0.0.1  mongo' to ````/etc/host```` of your mach
 
 Run the [init-resources.sh](init-resources.sh):
 ```bash
-./[init-resources.sh](init-resources.sh) 
+./init-resources.sh
 ```
 After you can edit and run your own tests based on [MongoTransactionTestApplicationTests](src/main/java/com/github/prbpedro/mongotransactiontest/MongoTransactionTestApplication.java) and observe how mongodb deal with conflicting transactions.
 
